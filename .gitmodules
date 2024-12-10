@@ -1,0 +1,10 @@
+[submodule "godot-cpp"]
+	path = godot-cpp
+	url = https://github.com/godotengine/godot-cpp
+	branch = 4.3
+[submodule "submodules/SAV1"]
+	path = submodules/SAV1
+	url = https://github.com/zwodev/SAV1.git
+[submodule "submodules/dav1d"]
+	path = submodules/dav1d
+	url = https://github.com/videolan/dav1d.git
