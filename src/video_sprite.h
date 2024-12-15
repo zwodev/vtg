@@ -4,6 +4,7 @@
 #include <godot_cpp/classes/sprite2d.hpp>
 #include <godot_cpp/classes/image_texture.hpp>
 #include <godot_cpp/classes/image.hpp>
+#include "sav1.h"
 
 namespace godot {
 
@@ -14,6 +15,8 @@ private:
     double time_passed;
     Ref<Image> image;
     Ref<ImageTexture> texture;
+    Sav1Settings settings;
+    Sav1Context context = {0};
 
 protected:
 static void _bind_methods();
