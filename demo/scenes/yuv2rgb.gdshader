@@ -16,7 +16,7 @@ void fragment() {
 	vec2 pixel = texture(TEXTURE, vec2(Y_u, Y_v)).rg;
 	float Y = pixel[Y_ix];
 
-	// common for U and V
+	// Get chroma (I420)
 	x = floor(x / 2.0);
 	y = floor(y / 2.0);
 	int UV_ix = int(mod(x, 2.0));
@@ -24,15 +24,15 @@ void fragment() {
 	float UV_u = (UV.x + float(UV_iy)) * 0.25;
 	float UV_v = UV.y * 0.125;
 
-	// get U
+	// Get U
 	vec2 U_pixel = texture(TEXTURE, vec2(UV_u, 0.5 + UV_v)).rg;
 	float U = U_pixel[UV_ix] - 0.5;
 
-	// get V
+	// Get V
 	vec2 V_pixel = texture(TEXTURE, vec2(UV_u, 0.625 + UV_v)).rg;
 	float V = V_pixel[UV_ix] - 0.5;
 
-	// yuv 2 rgb
+	// YUV to RGB
 	float r = Y + (1.403 * V);
 	float g = Y - (0.344 * U) - (0.714 * V);
 	float b = Y + (1.770 * U);

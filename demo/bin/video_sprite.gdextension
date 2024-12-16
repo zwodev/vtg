@@ -1,0 +1,9 @@
+[configuration]
+
+entry_symbol = "video_sprite_library_init"
+compatibility_minimum = "4.3"
+
+[libraries]
+
+linux.debug.x86_64 = "res://bin/libvideosprite.linux.template_debug.x86_64.so"
+linux.release.x86_64 = "res://bin/libvideosprite.linux.template_release.x86_64.so"

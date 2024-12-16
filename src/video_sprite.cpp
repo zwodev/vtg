@@ -77,10 +77,4 @@ void VideoSprite::_process(double delta) {
         sav1_get_audio_frame(&context, &sav1_frame);
         // do not use audio frame for now
     }
-
-    //time_passed += delta;
-    //Vector2 new_position = Vector2(10.0 + (10.0 * sin(time_passed * 2.0)), 10.0 + (10.0 * cos(time_passed * 1.5)) );
-    //set_position(new_position);
-    //image->fill(Color((cos(time_passed) + 1.0) / 2.0, 1.0, (sin(time_passed) + 1.0) / 2.0, 1.0));
-    //texture->update(image);
 }
