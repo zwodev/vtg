@@ -39,7 +39,7 @@ void VideoSprite::_process(double delta) {
         UtilityFunctions::print("Error getting frame!");
 
     if (frame_ready) {
-        UtilityFunctions::print("Frame ready!");
+        //UtilityFunctions::print("Frame ready!");
         Sav1VideoFrame *sav1_frame;
         sav1_get_video_frame(&context, &sav1_frame);
         if (sav1_frame->pixel_format == SAV1_PIXEL_FORMAT_ORIG) {
@@ -63,8 +63,6 @@ void VideoSprite::_process(double delta) {
             memcpy((void*)image->ptrw(), (void*)sav1_frame->data, width * height * 4);
         }
         texture->update(image);
-        // do not use video frame for now
-        //UtilityFunctions::print("Frame ready!");
     }
     //else {
     //    UtilityFunctions::print("Frame not ready!!");
