@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq04jq0hms4hk"]
+
+[ext_resource type="Shader" path="res://scenes/yuv2rgb.gdshader" id="1_eptqi"]
+[ext_resource type="Script" path="res://scenes/video_sprite.gd" id="2_2koka"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7w7"]
+shader = ExtResource("1_eptqi")
+
+[node name="Main" type="Node2D"]
+
+[node name="VideoSprite" type="VideoSprite" parent="."]
+material = SubResource("ShaderMaterial_eu7w7")
+script = ExtResource("2_2koka")
