@@ -11,7 +11,8 @@ void VideoSprite::_bind_methods() {
 
 VideoSprite::VideoSprite() {
     time_passed = 0.0;
-    sav1_default_settings(&settings, "/home/nils/Public/test.webm");
+    //sav1_default_settings(&settings, "/home/nils/Public/test.webm");
+    sav1_default_settings(&settings, "/Users/nils/Documents/Videos/av1_chimera_test.webm");
     settings.desired_pixel_format = SAV1_PIXEL_FORMAT_ORIG;
     int success = sav1_create_context(&context, &settings);
     if (success < 0) 
