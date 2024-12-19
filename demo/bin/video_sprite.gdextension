@@ -9,3 +9,11 @@ linux.debug.x86_64 = "res://bin/libvideosprite.linux.template_debug.x86_64.so"
 linux.release.x86_64 = "res://bin/libvideosprite.linux.template_release.x86_64.so"
 macos.debug = "res://bin/libvideosprite.macos.template_debug.framework"
 macos.release = "res://bin/libvideosprite.macos.template_release.framework"
+
+[dependencies]
+
+macos =
+    {
+        "res://bin/libsav1.dylib": "Contents/Frameworks",
+        "res://bin/libdav1d.7.dylib": "Contents/Frameworks"
+    }

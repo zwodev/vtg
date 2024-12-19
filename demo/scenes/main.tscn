@@ -8,6 +8,104 @@ shader = ExtResource("1_eptqi")
 
 [node name="Main" type="Node2D"]
 
-[node name="VideoSprite" type="VideoSprite" parent="."]
+[node name="VideoGroup1" type="Node2D" parent="."]
+
+[node name="VideoSprite1" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
 material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -1732)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite2" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -1732)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite3" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -580)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite4" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -580)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite5" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 572)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite6" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 572)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite7" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 1724)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite8" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 1724)
+script = ExtResource("2_2koka")
+
+[node name="VideoGroup2" type="Node2D" parent="."]
+visible = false
+position = Vector2(4429.22, 0)
+
+[node name="VideoSprite1" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -1732)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite2" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -1732)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite3" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -580)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite4" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -580)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite5" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 572)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite6" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 572)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite7" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 1724)
+script = ExtResource("2_2koka")
+
+[node name="VideoSprite8" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 1724)
 script = ExtResource("2_2koka")
