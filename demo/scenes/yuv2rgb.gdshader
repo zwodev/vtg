@@ -41,5 +41,6 @@ void fragment() {
 
 	// DEBUGGING
 	//COLOR = vec4(float(Y_iy) * 0.8, 0, 0, 1.0);
-	//COLOR = vec4(U, U, U, 1.0);
+	//COLOR = vec4(Y, Y, Y, 1.0);
+	//COLOR = vec4(float(Y_iy), float(Y_iy), float(Y_ix), 1.0);
 }

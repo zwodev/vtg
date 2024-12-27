@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dq04jq0hms4hk"]
+[gd_scene load_steps=10 format=3 uid="uid://dq04jq0hms4hk"]
 
 [ext_resource type="Shader" path="res://scenes/yuv2rgb.gdshader" id="1_eptqi"]
 [ext_resource type="Script" path="res://scenes/video_sprite.gd" id="2_2koka"]
@@ -12,10 +12,16 @@ shader = ExtResource("1_eptqi")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fn5gr"]
 shader = ExtResource("4_inwkb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s26hh"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx2xg"]
 shader = ExtResource("3_msmoy")
-shader_parameter/size = Vector2(500, 500)
-shader_parameter/zoom = Vector2(0.471937, 0.471937)
+shader_parameter/size = Vector2(2208.04, 2208.04)
+shader_parameter/zoom = Vector2(0.529732, 0.529732)
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc4eo"]
+shader = ExtResource("3_msmoy")
+shader_parameter/size = Vector2(1083.27, 1083.27)
+shader_parameter/zoom = Vector2(0.529732, 0.529732)
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="Main" type="Node2D"]
@@ -123,16 +129,31 @@ material = SubResource("ShaderMaterial_eu7w7")
 position = Vector2(1000, 1724)
 script = ExtResource("2_2koka")
 
+[node name="VideoSprite_Background" type="VideoSprite" parent="."]
+file_name = "/home/nils/Videos/BlenderMovies/WingIt_Blender_Open_Movie.webm"
+texture_filter = 1
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(961, 542)
+script = ExtResource("2_2koka")
+
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = SubResource("ShaderMaterial_fn5gr")
 
 [node name="VideoSprite_Main" type="VideoSprite" parent="CanvasGroup"]
 file_name = "/home/nils/Public/test.webm"
+texture_filter = 1
 material = SubResource("ShaderMaterial_eu7w7")
 position = Vector2(961, 542)
 script = ExtResource("2_2koka")
 
 [node name="SDF Circle" type="Node2D" parent="CanvasGroup"]
-material = SubResource("ShaderMaterial_s26hh")
+material = SubResource("ShaderMaterial_gx2xg")
+position = Vector2(0, 2)
 script = ExtResource("4_8evyb")
-size = Vector2(500, 500)
+size = 2208.04
+
+[node name="SDF Circle2" type="Node2D" parent="CanvasGroup"]
+material = SubResource("ShaderMaterial_uc4eo")
+position = Vector2(1921, 0)
+script = ExtResource("4_8evyb")
+size = 1083.27

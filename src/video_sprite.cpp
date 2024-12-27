@@ -77,6 +77,7 @@ void VideoSprite::process_video_frame() {
             image = Image::create(width, height, false, Image::FORMAT_RG8);
             image->fill(Color(1.0, 1.0, 1.0, 1.0));
             texture = ImageTexture::create_from_image(image);
+            set_texture(texture);
         }
         memcpy((void*)image->ptrw(), (void*)sav1_frame->data, width * height * 2);
     }
@@ -87,6 +88,7 @@ void VideoSprite::process_video_frame() {
             image = Image::create(width, height, false, Image::FORMAT_RGBA8);
             image->fill(Color(1.0, 1.0, 1.0, 1.0));
             texture = ImageTexture::create_from_image(image);
+            set_texture(texture);
         }
         memcpy((void*)image->ptrw(), (void*)sav1_frame->data, width * height * 4);
     }
