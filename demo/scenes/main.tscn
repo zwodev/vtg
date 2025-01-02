@@ -12,16 +12,16 @@ shader = ExtResource("1_eptqi")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fn5gr"]
 shader = ExtResource("4_inwkb")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gx2xg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bls0l"]
 shader = ExtResource("3_msmoy")
-shader_parameter/size = Vector2(2208.04, 2208.04)
-shader_parameter/zoom = Vector2(0.529732, 0.529732)
+shader_parameter/size = Vector2(630.964, 630.964)
+shader_parameter/zoom = Vector2(0.191041, 0.191041)
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uc4eo"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v07mi"]
 shader = ExtResource("3_msmoy")
-shader_parameter/size = Vector2(1083.27, 1083.27)
-shader_parameter/zoom = Vector2(0.529732, 0.529732)
+shader_parameter/size = Vector2(1582.02, 1582.02)
+shader_parameter/zoom = Vector2(0.191041, 0.191041)
 shader_parameter/color = Vector4(1, 1, 1, 1)
 
 [node name="Main" type="Node2D"]
@@ -130,30 +130,32 @@ position = Vector2(1000, 1724)
 script = ExtResource("2_2koka")
 
 [node name="VideoSprite_Background" type="VideoSprite" parent="."]
-file_name = "/home/nils/Videos/BlenderMovies/WingIt_Blender_Open_Movie.webm"
+file_name = "/Users/nils/Nextcloud/Projects/2024-12-09_GodotVideoExtension/Movies/TheDailyDweebs_Blender_Open_Movie.webm"
 texture_filter = 1
 material = SubResource("ShaderMaterial_eu7w7")
 position = Vector2(961, 542)
 script = ExtResource("2_2koka")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_fn5gr")
 
 [node name="VideoSprite_Main" type="VideoSprite" parent="CanvasGroup"]
-file_name = "/home/nils/Public/test.webm"
+file_name = "/Users/nils/Nextcloud/Projects/2024-12-09_GodotVideoExtension/Movies/WingIt_Blender_Open_Movie.webm"
+visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_eu7w7")
 position = Vector2(961, 542)
 script = ExtResource("2_2koka")
 
 [node name="SDF Circle" type="Node2D" parent="CanvasGroup"]
-material = SubResource("ShaderMaterial_gx2xg")
-position = Vector2(0, 2)
+material = SubResource("ShaderMaterial_bls0l")
+position = Vector2(449.607, 597.65)
 script = ExtResource("4_8evyb")
-size = 2208.04
+size = 630.964
 
 [node name="SDF Circle2" type="Node2D" parent="CanvasGroup"]
-material = SubResource("ShaderMaterial_uc4eo")
-position = Vector2(1921, 0)
+material = SubResource("ShaderMaterial_v07mi")
+position = Vector2(1288.32, 230.939)
 script = ExtResource("4_8evyb")
-size = 1083.27
+size = 1582.02

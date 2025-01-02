@@ -1,5 +1,6 @@
 # Custom
 *.os
+videos/
 
 # Helper scripts
 *.ps1

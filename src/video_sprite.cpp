@@ -54,6 +54,10 @@ void VideoSprite::play() {
 }
 
 VideoSprite::VideoSprite() {
+    image = Image::create(1920, 1080, false, Image::FORMAT_RG8);
+    image->fill(Color(1.0, 1.0, 1.0, 1.0));
+    texture = ImageTexture::create_from_image(image);
+    set_texture(texture);
 }
 
 VideoSprite::~VideoSprite() {
@@ -61,10 +65,7 @@ VideoSprite::~VideoSprite() {
 }
 
 void VideoSprite::_ready() {
-    image = Image::create(1920, 1080, false, Image::FORMAT_RG8);
-    image->fill(Color(1.0, 1.0, 1.0, 1.0));
-    texture = ImageTexture::create_from_image(image);
-    set_texture(texture);
+    
 }
 
 void VideoSprite::process_video_frame() {
@@ -104,6 +105,13 @@ void VideoSprite::process_audio_frame() {
 void VideoSprite::_process(double delta) {
     if (!context.is_initialized) {
          return;
+    }
+    
+    int isAtEnd = 0;
+    sav1_is_playback_at_file_end(&context, &isAtEnd);
+    if (isAtEnd) {
+        sav1_seek_playback(&context, 0, SAV1_SEEK_MODE_FAST);
+        return;
     }
 
     // video frame
