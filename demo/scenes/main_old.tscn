@@ -1,0 +1,161 @@
+[gd_scene load_steps=10 format=3 uid="uid://bv1r2nooq8vsh"]
+
+[ext_resource type="Shader" uid="uid://dxdx5lo813ai8" path="res://scenes/yuv2rgb.gdshader" id="1_rqyo2"]
+[ext_resource type="Script" uid="uid://2ront8wl6dny" path="res://scripts/video_sprite.gd" id="2_6r5i0"]
+[ext_resource type="Shader" uid="uid://dyqx3t0s6q44p" path="res://scenes/canvas_group.gdshader" id="3_l4nag"]
+[ext_resource type="Shader" uid="uid://i4je055l8v8h" path="res://addons/sdf_toolkit/sdf_circle.gdshader" id="4_6ipvj"]
+[ext_resource type="Script" uid="uid://us8yoktp70n4" path="res://addons/sdf_toolkit/sdf_circle.gd" id="5_vt6j0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7w7"]
+shader = ExtResource("1_rqyo2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fn5gr"]
+shader = ExtResource("3_l4nag")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rqyo2"]
+shader = ExtResource("4_6ipvj")
+shader_parameter/size = Vector2(630.964, 630.964)
+shader_parameter/zoom = Vector2(0.5, 0.5)
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6r5i0"]
+shader = ExtResource("4_6ipvj")
+shader_parameter/size = Vector2(1582.02, 1582.02)
+shader_parameter/zoom = Vector2(0.5, 0.5)
+shader_parameter/color = Vector4(1, 1, 1, 1)
+
+[node name="Main" type="Node2D"]
+
+[node name="VideoGroup1" type="Node2D" parent="."]
+visible = false
+
+[node name="VideoSprite1" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -1732)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite2" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -1732)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite3" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -580)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite4" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -580)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite5" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 572)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite6" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 572)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite7" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 1724)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite8" type="VideoSprite" parent="VideoGroup1"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 1724)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoGroup2" type="Node2D" parent="."]
+visible = false
+position = Vector2(4429.22, 0)
+
+[node name="VideoSprite1" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -1732)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite2" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -1732)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite3" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, -580)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite4" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, -580)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite5" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 572)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite6" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 572)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite7" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(-984, 1724)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite8" type="VideoSprite" parent="VideoGroup2"]
+file_name = "/Users/nils/Documents/Videos/av1_chimera_test.webm"
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(1000, 1724)
+script = ExtResource("2_6r5i0")
+
+[node name="VideoSprite_Background" type="VideoSprite" parent="."]
+file_name = "/Users/nils/Nextcloud/Projects/2024-12-09_GodotVideoExtension/Movies/TheDailyDweebs_Blender_Open_Movie.webm"
+texture_filter = 1
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(961, 542)
+script = ExtResource("2_6r5i0")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_fn5gr")
+
+[node name="VideoSprite_Main" type="VideoSprite" parent="CanvasGroup"]
+file_name = "/Users/nils/Nextcloud/Projects/2024-12-09_GodotVideoExtension/Movies/WingIt_Blender_Open_Movie.webm"
+visible = false
+texture_filter = 1
+material = SubResource("ShaderMaterial_eu7w7")
+position = Vector2(961, 542)
+script = ExtResource("2_6r5i0")
+
+[node name="SDF Circle" type="Node2D" parent="CanvasGroup"]
+material = SubResource("ShaderMaterial_rqyo2")
+position = Vector2(449.607, 597.65)
+script = ExtResource("5_vt6j0")
+size = 630.964
+
+[node name="SDF Circle2" type="Node2D" parent="CanvasGroup"]
+material = SubResource("ShaderMaterial_6r5i0")
+position = Vector2(1288.32, 230.939)
+script = ExtResource("5_vt6j0")
+size = 1582.02

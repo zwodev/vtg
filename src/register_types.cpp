@@ -1,6 +1,7 @@
 #include "register_types.h"
 
 #include "video_sprite.h"
+#include "video_texture.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -14,6 +15,7 @@ void initialize_video_sprite_module(ModuleInitializationLevel p_level) {
     }
 
     GDREGISTER_CLASS(VideoSprite);
+    GDREGISTER_CLASS(VideoTexture);
 }
 
 void uninitialize_video_sprite_module(ModuleInitializationLevel p_level) {

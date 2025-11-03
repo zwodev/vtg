@@ -1,0 +1,6 @@
+[gd_resource type="CameraTexture" format=3 uid="uid://ckj5nv4pk3xsl"]
+
+[resource]
+resource_local_to_scene = true
+camera_feed_id = 2
+which_feed = 1
