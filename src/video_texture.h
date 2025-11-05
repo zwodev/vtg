@@ -35,7 +35,8 @@ public:
     String get_file_name() const;
 
     void play();
-
+    void stop();
+    bool is_playing();
 };
 
 }

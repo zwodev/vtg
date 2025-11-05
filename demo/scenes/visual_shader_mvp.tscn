@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://dur5gp0fge7gj"]
 
-[ext_resource type="Shader" uid="uid://dxdx5lo813ai8" path="res://scenes/yuv2rgb.gdshader" id="1_8f6fr"]
-[ext_resource type="Script" uid="uid://2ront8wl6dny" path="res://scripts/video_sprite.gd" id="2_5hbyf"]
+[ext_resource type="Shader" uid="uid://dxdx5lo813ai8" path="res://shaders/yuv2rgb.gdshader" id="1_8f6fr"]
+[ext_resource type="Script" uid="uid://2ront8wl6dny" path="res://scripts/video_sprite_ext.gd" id="2_5hbyf"]
 [ext_resource type="Texture2D" uid="uid://ckj5nv4pk3xsl" path="res://textures/camera_texture_1.tres" id="2_648xb"]
 [ext_resource type="Shader" uid="uid://dkdu4aw07x1e8" path="res://shaders/ycbcr2rgb.gdshader" id="3_lulm1"]
 [ext_resource type="Shader" uid="uid://uidf3mcxdx8r" path="res://shaders/node_test_shader.tres" id="3_twpp2"]

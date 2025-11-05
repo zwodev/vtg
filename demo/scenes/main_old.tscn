@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://bv1r2nooq8vsh"]
 
-[ext_resource type="Shader" uid="uid://dxdx5lo813ai8" path="res://scenes/yuv2rgb.gdshader" id="1_rqyo2"]
-[ext_resource type="Script" uid="uid://2ront8wl6dny" path="res://scripts/video_sprite.gd" id="2_6r5i0"]
+[ext_resource type="Shader" uid="uid://dxdx5lo813ai8" path="res://shaders/yuv2rgb.gdshader" id="1_rqyo2"]
+[ext_resource type="Script" uid="uid://2ront8wl6dny" path="res://scripts/video_sprite_ext.gd" id="2_6r5i0"]
 [ext_resource type="Shader" uid="uid://dyqx3t0s6q44p" path="res://scenes/canvas_group.gdshader" id="3_l4nag"]
-[ext_resource type="Shader" uid="uid://i4je055l8v8h" path="res://addons/sdf_toolkit/sdf_circle.gdshader" id="4_6ipvj"]
-[ext_resource type="Script" uid="uid://us8yoktp70n4" path="res://addons/sdf_toolkit/sdf_circle.gd" id="5_vt6j0"]
+[ext_resource type="Shader" path="res://addons/sdf_toolkit/sdf_circle.gdshader" id="4_6ipvj"]
+[ext_resource type="Script" path="res://addons/sdf_toolkit/sdf_circle.gd" id="5_vt6j0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_eu7w7"]
 shader = ExtResource("1_rqyo2")

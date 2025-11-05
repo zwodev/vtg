@@ -21,4 +21,4 @@ window/dpi/allow_hidpi=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/sdf_toolkit/plugin.cfg", "res://addons/video_sprite/plugin.cfg")
+enabled=PackedStringArray("res://addons/video_sprite/plugin.cfg")
