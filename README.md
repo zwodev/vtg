@@ -6,8 +6,10 @@ cd ./src/submodules/SAV1/subprojects
 chmod +x download.sh
 ./download.sh
 
+cd ..
+
 meson setup buildir
-meson compile -C
+meson compile -C ./builddir
 
 ```
 
