@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfx5vxo7ithkb"]
+
+[ext_resource type="Shader" uid="uid://cwy5jyprf1d4k" path="res://shaders/bgra2rgba.gdshader" id="1_7ksgn"]
+[ext_resource type="Script" uid="uid://dy1dukxfjlvwk" path="res://scripts/video_sprite.gd" id="2_1x302"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8k2ff"]
+shader = ExtResource("1_7ksgn")
+
+[node name="Main" type="Node2D"]
+
+[node name="VideoSprite_Metal" type="Sprite2D" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_8k2ff")
+position = Vector2(1197, 3140)
+script = ExtResource("2_1x302")
+file_name = "/Users/nils/Downloads/bbb_sunflower_2160p_60fps_normal_av1.mp4"
+use_hardware = true
+
+[node name="Control" type="Control" parent="VideoSprite_Metal"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.28
+offset_right = -462.0
+offset_bottom = -454.28003
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="VideoSprite_Metal/Control"]
+layout_mode = 1
+offset_left = -951.0
+offset_top = -485.71973
+offset_right = 1642.0
+offset_bottom = -348.71973
+theme_override_font_sizes/font_size = 100
+text = "3840x2160 60fps / VideoToolbox / Hardware Decoding"

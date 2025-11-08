@@ -9,7 +9,6 @@ shader = ExtResource("1_0wfyh")
 [node name="Main" type="Node2D"]
 
 [node name="VideoSprite_Sintel" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_sugp2")
 position = Vector2(230, -934)
@@ -35,7 +34,6 @@ theme_override_font_sizes/font_size = 100
 text = "1920x1080 24fps"
 
 [node name="VideoSprite_Dweebs" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_sugp2")
 position = Vector2(2154, -936)
@@ -61,7 +59,6 @@ theme_override_font_sizes/font_size = 100
 text = "1920x1080 24fps"
 
 [node name="VideoSprite_Netflix" type="Sprite2D" parent="."]
-visible = false
 texture_filter = 1
 material = SubResource("ShaderMaterial_sugp2")
 position = Vector2(1188, 872)

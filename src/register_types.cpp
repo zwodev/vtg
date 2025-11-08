@@ -1,7 +1,9 @@
 #include "register_types.h"
 
-#include "video_sprite.h"
-#include "video_texture.h"
+//#include "video_texture.h"
+#include "video_player.h"
+#include "video_player_soft.h"
+#include "video_player_metal.h"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -14,8 +16,11 @@ void initialize_vtg_module(ModuleInitializationLevel p_level) {
         return;
     }
 
-    //GDREGISTER_CLASS(VideoSprite);
-    GDREGISTER_CLASS(VideoTexture);
+    //GDREGISTER_CLASS(VideoTexture);
+    GDREGISTER_ABSTRACT_CLASS(VideoPlayer);
+    GDREGISTER_CLASS(VideoPlayerSoft);
+    GDREGISTER_CLASS(VideoPlayerMetal);
+
 }
 
 void uninitialize_vtg_module(ModuleInitializationLevel p_level) {

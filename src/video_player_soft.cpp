@@ -1,4 +1,4 @@
-#include "video_sprite.h"
+#include "video_player_soft.h"
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/variant/utility_functions.hpp>
 #include "memory.h"
@@ -6,25 +6,23 @@
 
 using namespace godot;
 
-void VideoSprite::_bind_methods() {
-    // properties
-    ClassDB::bind_method(D_METHOD("set_file_name", "file_name"), &VideoSprite::set_file_name);
-    ClassDB::bind_method(D_METHOD("get_file_name"), &VideoSprite::get_file_name);
-    ADD_PROPERTY(PropertyInfo(Variant::STRING, "file_name"), "set_file_name", "get_file_name");
-    
-    // methods
-    ClassDB::bind_method(D_METHOD("play"), &VideoSprite::play);
+VideoPlayerSoft::VideoPlayerSoft() {
+    image = Image::create(1920, 1080, false, Image::FORMAT_RG8);
+    image->fill(Color(1.0, 1.0, 1.0, 1.0));
+    image_texture = Ref<ImageTexture>(memnew(godot::ImageTexture));
+    image_texture->set_image(image);
+    texture = image_texture;
 }
 
-void VideoSprite::set_file_name(const String& p_file_name) {
-    file_name = p_file_name;
+VideoPlayerSoft::~VideoPlayerSoft() {
+    sav1_destroy_context(&context);
 }
 
-String VideoSprite::get_file_name() const {
-    return file_name;
+void VideoPlayerSoft::_bind_methods() {
+    VideoPlayer::_bind_methods();
 }
 
-bool VideoSprite::create_video_context() {
+bool VideoPlayerSoft::create_video_context() {
     if (file_name.is_empty()) {
         UtilityFunctions::print("VideoSprite: File name is empty.");
         return false;
@@ -33,6 +31,7 @@ bool VideoSprite::create_video_context() {
     CharString char_file_name = file_name.utf8();
     sav1_default_settings(&settings, (char*) char_file_name.get_data());
     settings.desired_pixel_format = SAV1_PIXEL_FORMAT_ORIG;
+    //settings.desired_pixel_format = SAV1_PIXEL_FORMAT_RGB;
     
     int success = sav1_create_context(&context, &settings);
     if (success < 0) {
@@ -43,32 +42,37 @@ bool VideoSprite::create_video_context() {
     return true;
 }
 
-void VideoSprite::play() {
+void VideoPlayerSoft::play() {
     if (!context.is_initialized) {
          if (!create_video_context()) {
-         return;
+            return;
          }
     }
 
     sav1_start_playback(&context);
 }
 
-VideoSprite::VideoSprite() {
-    image = Image::create(1920, 1080, false, Image::FORMAT_RG8);
-    image->fill(Color(1.0, 1.0, 1.0, 1.0));
-    texture = ImageTexture::create_from_image(image);
-    set_texture(texture);
+void VideoPlayerSoft::stop() {
+    if (!context.is_initialized)
+        return;
+
+    sav1_stop_playback(&context);
 }
 
-VideoSprite::~VideoSprite() {
-    sav1_destroy_context(&context);
+bool VideoPlayerSoft::is_playing() {
+    if (!context.is_initialized)
+        return false;
+
+    int is_paused;
+    int success = sav1_is_playback_paused(&context, &is_paused);
+    if (success < 0) {
+        return false;
+    }
+
+    return (is_paused == 0); 
 }
 
-void VideoSprite::_ready() {
-    
-}
-
-void VideoSprite::process_video_frame() {
+void VideoPlayerSoft::process_video_frame() {    
     Sav1VideoFrame *sav1_frame;
     sav1_get_video_frame(&context, &sav1_frame);
     if (sav1_frame->pixel_format == SAV1_PIXEL_FORMAT_ORIG) {
@@ -77,35 +81,37 @@ void VideoSprite::process_video_frame() {
         if ((width != image->get_width()) || (height != image->get_height()) || image->get_format() != Image::FORMAT_RG8) {
             image = Image::create(width, height, false, Image::FORMAT_RG8);
             image->fill(Color(1.0, 1.0, 1.0, 1.0));
-            texture = ImageTexture::create_from_image(image);
-            set_texture(texture);
+            image_texture->set_image(image);
+            texture = image_texture;
         }
         memcpy((void*)image->ptrw(), (void*)sav1_frame->data, width * height * 2);
     }
     else {
         size_t width = sav1_frame->width;
         size_t height = sav1_frame->height;
-        if ((width != image->get_width()) || (height != image->get_height()) || image->get_format() != Image::FORMAT_RGBA8) {
-            image = Image::create(width, height, false, Image::FORMAT_RGBA8);
+        if ((width != image->get_width()) || (height != image->get_height()) || image->get_format() != Image::FORMAT_RGB8) {
+            image = Image::create(width, height, false, Image::FORMAT_RGB8);
             image->fill(Color(1.0, 1.0, 1.0, 1.0));
-            texture = ImageTexture::create_from_image(image);
-            set_texture(texture);
+            image_texture->set_image(image);
+            texture = image_texture;
         }
-        memcpy((void*)image->ptrw(), (void*)sav1_frame->data, width * height * 4);
+        memcpy((void*)image->ptrw(), (void*)sav1_frame->data, width * height * 3);
     }
-    texture->update(image);
+    image_texture->update(image);
 }
 
-void VideoSprite::process_audio_frame() {
+void VideoPlayerSoft::process_audio_frame() {
     Sav1AudioFrame *sav1_frame;
     sav1_get_audio_frame(&context, &sav1_frame);
     // do not use audio frame for now
 }
 
-void VideoSprite::_process(double delta) {
-    if (!context.is_initialized) {
+void VideoPlayerSoft::update_frame() {
+    if (!context.is_initialized)
          return;
-    }
+
+    if (!is_playing()) 
+        return;
     
     int isAtEnd = 0;
     sav1_is_playback_at_file_end(&context, &isAtEnd);
@@ -115,18 +121,19 @@ void VideoSprite::_process(double delta) {
     }
 
     // video frame
-    int frame_ready;
-    int success = sav1_get_video_frame_ready(&context, &frame_ready);
+    int video_frame_ready;
+    int success = sav1_get_video_frame_ready(&context, &video_frame_ready);
     if (success < 0) 
         UtilityFunctions::print("Error getting frame!");
 
-    if (frame_ready) {
+    if (video_frame_ready) {
         process_video_frame();
     }
 
     // audio frame
-    sav1_get_audio_frame_ready(&context, &frame_ready);
-    if (frame_ready) {
+    int audio_frame_ready;
+    sav1_get_audio_frame_ready(&context, &audio_frame_ready);
+    if (audio_frame_ready) {
         process_audio_frame();
     }
 }

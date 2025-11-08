@@ -1,4 +1,0 @@
-[gd_resource type="ViewportTexture" format=3 uid="uid://dhe7x5iyfgwhh"]
-
-[resource]
-viewport_path = NodePath("VideoGroup/SubViewport_1")
