@@ -1,6 +1,17 @@
 # Video Toolkit for Godot
 
-## Building SAV1
+## 
+
+## Build Instruction
+### Building godot-cpp
+```
+cd ./src/submodules/godot-cpp
+scons platform=macos arch=arm64 target=template_release
+scons platform=macos arch=arm64 target=template_debug
+
+```
+
+### Building SAV1
 ```
 cd ./src/submodules/SAV1/subprojects
 chmod +x download.sh
@@ -11,15 +22,7 @@ meson compile -C
 
 ```
 
-## Building godot-cpp
-```
-cd ./src/submodules/godot-cpp
-scons platform=macos arch=arm64 target=template_release
-scons platform=macos arch=arm64 target=template_debug
-
-```
-
-## Building VTG
+### Building VTG
 ```
 scons platform=macos arch=arm64 target=template_release
 scons platform=macos arch=arm64 target=template_debug
