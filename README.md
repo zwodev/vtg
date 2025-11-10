@@ -1,8 +1,12 @@
 # Video Toolkit for Godot
 
-## 
+## Clone Repository
+```
+git clone --recurse-submodules https://github.com/zwodev/vtg.git
 
-## Build Instruction
+```
+
+## Build Instructions
 ### Building godot-cpp
 ```
 cd ./src/submodules/godot-cpp
