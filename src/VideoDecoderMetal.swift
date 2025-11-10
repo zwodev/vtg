@@ -145,7 +145,7 @@ private func decodeLoop() {
         while !Thread.current.isCancelled {           
             guard decompressionSession != nil, assetReader.status == .reading,
                   let sampleBuffer: CMSampleBuffer = sampleBufferOutput.copyNextSampleBuffer() else {
-                    Thread.sleep(forTimeInterval: 1)
+                    Thread.sleep(forTimeInterval: 0.1)
                 continue
             }
 
@@ -153,6 +153,7 @@ private func decodeLoop() {
                 decompressionSession!,
                 sampleBuffer: sampleBuffer,
                 flags: VTDecodeFrameFlags._EnableAsynchronousDecompression,
+                //flags: [],
                 frameRefcon: nil,
                 infoFlagsOut: nil
             )
