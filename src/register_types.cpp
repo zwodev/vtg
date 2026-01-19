@@ -1,9 +1,11 @@
 #include "register_types.h"
 
-//#include "video_texture.h"
 #include "video_player.h"
 #include "video_player_soft.h"
+
+#if defined(__APPLE__)
 #include "video_player_metal.h"
+#endif
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -16,10 +18,14 @@ void initialize_vtg_module(ModuleInitializationLevel p_level) {
         return;
     }
 
-    //GDREGISTER_CLASS(VideoTexture);
     GDREGISTER_ABSTRACT_CLASS(VideoPlayer);
     GDREGISTER_CLASS(VideoPlayerSoft);
+    
+#if defined(__APPLE__)   
     GDREGISTER_CLASS(VideoPlayerMetal);
+#elif defined(__linux__)
+#elif defined(_WIN32)
+#endif
 
 }
 

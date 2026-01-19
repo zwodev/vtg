@@ -18,6 +18,6 @@ file_name = "assets/videos/WingIt_Blender_Open_Movie.webm"
 [node name="VideoSprite_Dweebs" type="Sprite2D" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_sugp2")
-position = Vector2(2154, -936)
+position = Vector2(2154, -934)
 script = ExtResource("1_o5qli")
 file_name = "assets/videos/TheDailyDweebs_Blender_Open_Movie.webm"

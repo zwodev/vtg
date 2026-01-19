@@ -18,15 +18,21 @@ public:
 
     Ref<Texture2D> get_texture();
 
+    void set_looping(bool looping);
+    bool is_looping() const;
+
     virtual void play() = 0;
+    virtual void pause() = 0;
     virtual void stop() = 0;
     virtual bool is_playing() = 0;
+
     virtual void update_frame() = 0;
     
 
 protected:
     String file_name;
     Ref<Texture2D> texture;
+    bool looping = false;
     static void _bind_methods();
 
 };

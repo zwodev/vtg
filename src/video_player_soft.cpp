@@ -23,6 +23,10 @@ void VideoPlayerSoft::_bind_methods() {
 }
 
 bool VideoPlayerSoft::create_video_context() {
+    if (context.is_initialized) {
+        sav1_destroy_context(&context);
+    }
+
     if (file_name.is_empty()) {
         UtilityFunctions::print("VideoSprite: File name is empty.");
         return false;
@@ -31,7 +35,6 @@ bool VideoPlayerSoft::create_video_context() {
     CharString char_file_name = file_name.utf8();
     sav1_default_settings(&settings, (char*) char_file_name.get_data());
     settings.desired_pixel_format = SAV1_PIXEL_FORMAT_ORIG;
-    //settings.desired_pixel_format = SAV1_PIXEL_FORMAT_RGB;
     
     int success = sav1_create_context(&context, &settings);
     if (success < 0) {
@@ -43,13 +46,24 @@ bool VideoPlayerSoft::create_video_context() {
 }
 
 void VideoPlayerSoft::play() {
-    if (!context.is_initialized) {
+    if (stopped || !context.is_initialized) {
          if (!create_video_context()) {
             return;
          }
     }
 
     sav1_start_playback(&context);
+    if (stopped) {
+        sav1_seek_playback(&context, 0, SAV1_SEEK_MODE_FAST);
+        stopped = false;
+    }
+}
+
+void VideoPlayerSoft::pause() {
+    if (!context.is_initialized)
+        return;
+
+    sav1_stop_playback(&context);
 }
 
 void VideoPlayerSoft::stop() {
@@ -57,6 +71,7 @@ void VideoPlayerSoft::stop() {
         return;
 
     sav1_stop_playback(&context);
+    stopped = true;
 }
 
 bool VideoPlayerSoft::is_playing() {
@@ -69,7 +84,7 @@ bool VideoPlayerSoft::is_playing() {
         return false;
     }
 
-    return (is_paused == 0); 
+    return (is_paused == 0);
 }
 
 void VideoPlayerSoft::process_video_frame() {    
@@ -116,8 +131,13 @@ void VideoPlayerSoft::update_frame() {
     int isAtEnd = 0;
     sav1_is_playback_at_file_end(&context, &isAtEnd);
     if (isAtEnd) {
-        sav1_seek_playback(&context, 0, SAV1_SEEK_MODE_FAST);
-        return;
+        if (is_looping()) {
+            sav1_seek_playback(&context, 0, SAV1_SEEK_MODE_FAST);
+            return;
+        }
+        else {
+            stop();
+        }
     }
 
     // video frame

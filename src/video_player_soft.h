@@ -17,6 +17,7 @@ public:
     ~VideoPlayerSoft();
 
     void play() override;
+    void pause() override;
     void stop() override;
     bool is_playing() override;
     void update_frame() override;
@@ -32,6 +33,9 @@ private:
     Sav1Settings settings;
     Sav1Context context = {0};
 
+    bool stopped = false;
+
+private:
     bool create_video_context();
     void process_video_frame();
     void process_audio_frame();
