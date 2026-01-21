@@ -50,7 +50,7 @@ jobs:
 
       # Configure Meson
       - name: Meson configure
-        run: meson setup builddir ./submodules/SAV1
+        run: meson setup ./submodules/SAV1/builddir ./submodules/SAV1
 
       # Build SAV1
       - name: Meson build
