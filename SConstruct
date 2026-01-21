@@ -47,14 +47,14 @@ if env["platform"] == "macos":
     # env.Append(LIBS=[video_decoder])
 
     library = env.SharedLibrary(
-        "demo/bin/libvtg.{}.{}.framework/libvtg.{}.{}".format(
+        "demo/addons/video_toolkit/bin/libvtg.{}.{}.framework/libvtg.{}.{}".format(
             env["platform"], env["target"], env["platform"], env["target"]
         ),
         source=sources
     )
 else:
     library = env.SharedLibrary(
-        "demo/bin/libvtg{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
+        "demo/addons/video_toolkit/bin/libvtg{}{}".format(env["suffix"], env["SHLIBSUFFIX"]),
         source=sources,
     )
 

@@ -17,8 +17,10 @@ config/icon="res://icon.svg"
 
 [display]
 
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/dpi/allow_hidpi=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/video_sprite/plugin.cfg")
+enabled=PackedStringArray("res://addons/video_toolkit/plugin.cfg")
