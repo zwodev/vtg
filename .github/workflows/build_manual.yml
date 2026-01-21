@@ -13,8 +13,10 @@ jobs:
         include:
           - target: { platform: linux, arch: x86_64, os: ubuntu-22.04 }
             target-type: template_debug
-          - target: { platform: linux, arch: x86_64, os: ubuntu-22.04 }
-            target-type: template_release
+            float-precision: single
+          #- target: { platform: linux, arch: x86_64, os: ubuntu-22.04 }
+          #  target-type: template_release
+          #  float-precision: single
           #- target: { platform: macos, arch: universal, os: macos-latest }
           #  target-type: template_debug
           #- target: { platform: macos, arch: universal, os: macos-latest }
