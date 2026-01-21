@@ -12,9 +12,11 @@ jobs:
       matrix:
         target:
           [
-            { platform: linux, arch: x86_64, os: ubuntu-22.04 }
+            #{ platform: linux, arch: x86_64, os: ubuntu-22.04 }
+            { platform: macos, arch: universal, os: macos-latest }
           ]
-        target-type: [template_debug, template_release]
+        #target-type: [template_debug, template_release]
+        target-type: [template_release]
         float-precision: [single]
 
     runs-on: ${{ matrix.target.os }}
@@ -87,3 +89,16 @@ jobs:
           name: vtg-${{ matrix.target.platform }}-${{ matrix.target.arch }}-${{ matrix.float-precision }}-${{ matrix.target-type }}
           path: |
             ${{ github.workspace }}/demo/**
+
+  # Merges all the build artifacts together into a single godot-cpp-template artifact.
+  # If you comment out this step, all the builds will be uploaded individually.
+  # merge:
+  #   runs-on: ubuntu-22.04
+  #   needs: build
+  #   steps:
+  #     - name: Merge Artifacts
+  #       uses: actions/upload-artifact/merge@v4
+  #       with:
+  #         name: vtg
+  #         pattern: vtg-*
+  #         delete-merged: true
