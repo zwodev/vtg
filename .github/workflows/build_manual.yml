@@ -13,7 +13,7 @@ jobs:
         target:
           [
             #{ platform: linux, arch: x86_64, os: ubuntu-22.04 }
-            { platform: macos, arch: universal, os: macos-latest }
+            { platform: macos, arch: arm64, os: macos-latest }
           ]
         #target-type: [template_debug, template_release]
         target-type: [template_release]
