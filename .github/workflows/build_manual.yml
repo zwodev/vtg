@@ -10,17 +10,12 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        include:
-          - target: { platform: linux, arch: x86_64, os: ubuntu-22.04 }
-            target-type: template_debug
-            float-precision: single
-          #- target: { platform: linux, arch: x86_64, os: ubuntu-22.04 }
-          #  target-type: template_release
-          #  float-precision: single
-          #- target: { platform: macos, arch: universal, os: macos-latest }
-          #  target-type: template_debug
-          #- target: { platform: macos, arch: universal, os: macos-latest }
-          #  target-type: template_release
+        target:
+          [
+            { platform: linux, arch: x86_64, os: ubuntu-22.04 }
+          ]
+        target-type: [template_debug, template_release]
+        float-precision: [single]
 
     runs-on: ${{ matrix.target.os }}
     steps:
@@ -84,3 +79,11 @@ jobs:
         with:
           scons-cache: ${{ github.workspace }}/.scons-cache/
           cache-name: ${{ matrix.target.platform }}_${{ matrix.target.arch }}_${{ matrix.float-precision }}_${{ matrix.target-type }}
+
+      # Upload the build
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vtg-${{ matrix.target.platform }}-${{ matrix.target.arch }}-${{ matrix.float-precision }}-${{ matrix.target-type }}
+          path: |
+            ${{ github.workspace }}/demo/**
