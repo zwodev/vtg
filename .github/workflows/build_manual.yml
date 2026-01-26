@@ -45,7 +45,8 @@ jobs:
           sudo apt install -y nasm
 
       # Download SAV1 dependencies
-      - name: Download SAV1 dependencies 
+      - name: Download SAV1 dependencies
+        shell: bash
         run: |
           cd ./submodules/SAV1/subprojects
           chmod +x download.sh
