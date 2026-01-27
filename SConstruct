@@ -13,7 +13,7 @@ env = SConscript("submodules/godot-cpp/SConstruct")
 # - LINKFLAGS are for linking flags
 
 if env['PLATFORM'] == 'win32':
-    env['LIBSUFFIXES'] = ['$LIBSUFFIXES', '.a']
+    env['LIBSUFFIXES'] = ['.a']
 
 env.Append(CPPPATH=["src/", "submodules/SAV1/include", "submodules/SAV1/subprojects/dav1d/include"])
 env.Append(LIBPATH=["submodules/SAV1/builddir", "submodules/SAV1/builddir/subprojects/opus/src", "submodules/SAV1/builddir/subprojects/dav1d/src"])
