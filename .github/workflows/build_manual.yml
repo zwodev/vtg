@@ -53,7 +53,12 @@ jobs:
           ./download.sh
 
       # Configure Meson
-      - name: Meson configure
+      - name: Meson configure (Windows)
+        if: ${{ matrix.target.platform == 'windows' }}
+        run: meson setup --vsenv ./submodules/SAV1/builddir ./submodules/SAV1
+
+      - name: Meson configure (Other)
+        if: ${{ matrix.target.platform != 'windows' }}
         run: meson setup ./submodules/SAV1/builddir ./submodules/SAV1
 
       # Build SAV1
