@@ -66,6 +66,16 @@ jobs:
       - name: Meson build
         run: meson compile -C ./submodules/SAV1/builddir
 
+      # Copy and rename SAV1 libs (Windows)
+      - name: Copy and rename SAV1 libs
+        if: ${{ matrix.target.platform == 'windows' }}
+        shell: bash
+        run: |
+          cd ./submodules/SAV1/builddir
+          cp libsav1.a sav1.lib
+          cp ./subprojects/dav1d/src/libdav1d.a ./subprojects/dav1d/src/dav1d.lib
+          cp ./subprojects/opus/src/libopus.a ./subprojects/opus/src/opus.lib
+
       # Setup godot-cpp dependencies
       - name: Setup godot-cpp
         uses: ./submodules/godot-cpp/.github/actions/setup-godot-cpp
