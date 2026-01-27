@@ -66,7 +66,7 @@ jobs:
         shell: bash
         run: |
           cp ./submodules/SAV1/builddir/subprojects/dav1d/src/libdav1d.a ./submodules/SAV1/builddir/subprojects/dav1d/src/dav1d.lib
-          cp ./submodules/SAV1/builddir/subprojects/opus/src/libopus.a ./submodules/SAV1/builddir/subprojects/dav1d/src/opus.lib
+          cp ./submodules/SAV1/builddir/subprojects/opus/src/libopus.a ./submodules/SAV1/builddir/subprojects/opus/src/opus.lib
           cp ./submodules/SAV1/builddir/libsav1.a ./submodules/SAV1/builddir/sav1.lib
           
       # Setup godot-cpp dependencies
