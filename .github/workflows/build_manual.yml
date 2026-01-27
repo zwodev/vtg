@@ -55,7 +55,7 @@ jobs:
       # Configure Meson (Windows)
       - name: Meson configure
         if: ${{ matrix.target.platform == 'windows' }}
-        run: meson setup --vsenv ./submodules/SAV1/builddir ./submodules/SAV1
+        run: meson setup --vsenv -Dc_args="-MT" -Dcpp_args="-MT" ./submodules/SAV1/builddir ./submodules/SAV1
 
       # Configure Meson (Other)
       - name: Meson configure
