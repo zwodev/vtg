@@ -53,18 +53,22 @@ jobs:
           ./download.sh
 
       # Configure Meson
-      - name: Meson configure (Windows)
-        if: ${{ matrix.target.platform == 'windows' }}
+      - name: Meson configure
         run: meson setup --vsenv ./submodules/SAV1/builddir ./submodules/SAV1
-
-      - name: Meson configure (Other)
-        if: ${{ matrix.target.platform != 'windows' }}
-        run: meson setup ./submodules/SAV1/builddir ./submodules/SAV1
 
       # Build SAV1
       - name: Meson build
         run: meson compile -C ./submodules/SAV1/builddir
 
+      # Copy dependencies to .lib (Windows)
+      - name: Copy libraries
+        if: ${{ matrix.target.platform == 'windows' }}
+        shell: bash
+        run: |
+          cp ./submodules/SAV1/builddir/subprojects/dav1d/src/libdav1d.a ./submodules/SAV1/builddir/subprojects/dav1d/src/dav1d.lib
+          cp ./submodules/SAV1/builddir/subprojects/opus/src/libopus.a ./submodules/SAV1/builddir/subprojects/dav1d/src/opus.lib
+          cp ./submodules/SAV1/builddir/libsav1.a ./submodules/SAV1/builddir/sav1.lib
+          
       # Setup godot-cpp dependencies
       - name: Setup godot-cpp
         uses: ./submodules/godot-cpp/.github/actions/setup-godot-cpp
