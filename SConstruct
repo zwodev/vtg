@@ -16,8 +16,8 @@ env.Append(CPPPATH=["src/", "submodules/SAV1/include", "submodules/SAV1/subproje
 env.Append(LIBPATH=["submodules/SAV1/builddir", "submodules/SAV1/builddir/subprojects/opus/src", "submodules/SAV1/builddir/subprojects/dav1d/src"])
 env.Append(LIBS=["sav1", "dav1d", "opus"])
 
-if env["PLATFORM"] == "win32" and "cl.exe" in env["CC"]:
-    env.Append(LIBS=["winmm"])
+if (env.get('PLATFORM') == 'win32' and 'msvc' in env.get('TOOLS', [])):
+    env.Append(LIBS=['winmm'])
 
 sources = [
     "src/register_types.cpp",
