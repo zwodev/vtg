@@ -11,9 +11,9 @@ jobs:
       matrix:
         target:
           [
-            { platform: windows, arch: x86_64, os: windows-latest }
-            #{ platform: linux, arch: x86_64, os: ubuntu-22.04 },
-            #{ platform: macos, arch: arm64, os: macos-latest }
+            { platform: windows, arch: x86_64, os: windows-latest },
+            { platform: linux, arch: x86_64, os: ubuntu-22.04 },
+            { platform: macos, arch: arm64, os: macos-latest }
           ]
         #target-type: [template_debug, template_release]
         target-type: [template_release]
@@ -102,6 +102,13 @@ jobs:
         with:
           scons-cache: ${{ github.workspace }}/.scons-cache/
           cache-name: ${{ matrix.target.platform }}_${{ matrix.target.arch }}_${{ matrix.float-precision }}_${{ matrix.target-type }}
+
+      # Clean up compilation files
+      - name: Windows - Delete compilation files
+        if: ${{ matrix.target.platform == 'windows' }}
+        shell: pwsh
+        run: |
+          Remove-Item bin/* -Include *.exp,*.lib,*.pdb -Force
 
       # Upload the build
       - name: Upload Artifact
