@@ -120,13 +120,13 @@ jobs:
 
   # Merges all the build artifacts together into a single godot-cpp-template artifact.
   # If you comment out this step, all the builds will be uploaded individually.
-  # merge:
-  #   runs-on: ubuntu-22.04
-  #   needs: build
-  #   steps:
-  #     - name: Merge Artifacts
-  #       uses: actions/upload-artifact/merge@v4
-  #       with:
-  #         name: vtg
-  #         pattern: vtg-*
-  #         delete-merged: true
+  merge:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - name: Merge Artifacts
+        uses: actions/upload-artifact/merge@v4
+        with:
+          name: vtg
+          pattern: vtg-*
+          delete-merged: true
